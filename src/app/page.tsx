@@ -4,6 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createSupabaseClient, slugify } from "@/lib/supabase";
 
+// DEMO ONLY: intentional TypeScript error — Vercel build will fail. Delete this line to fix.
+const vercelDemoBreak: string = 123;
+
 export default function HomePage() {
   const router = useRouter();
   const [deckName, setDeckName] = useState("");
