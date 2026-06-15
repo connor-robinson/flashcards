@@ -21,6 +21,22 @@ flowchart LR
 
 ### 1. Supabase (one-time)
 
+**Option A — Supabase CLI (recommended)**
+
+See [`supabase/CLI.md`](./supabase/CLI.md) for the full walkthrough. Short version:
+
+```powershell
+supabase login
+supabase projects list
+supabase link --project-ref YOUR_PROJECT_REF
+npm run db:push
+supabase projects api-keys --project-ref YOUR_PROJECT_REF
+```
+
+Copy the URL and `anon` key into `.env.local`.
+
+**Option B — Dashboard**
+
 1. Go to [supabase.com](https://supabase.com) and create a free project.
 2. Open **SQL Editor** → **New query**.
 3. Paste the contents of [`supabase/schema.sql`](./supabase/schema.sql) and click **Run**.
@@ -101,7 +117,9 @@ src/
     supabase.ts           # Supabase client
     types.ts
 supabase/
-  schema.sql              # Database tables + policies
+  CLI.md                  # Connect via Supabase CLI
+  schema.sql              # Same schema as migration (dashboard fallback)
+  migrations/             # Applied by `supabase db push`
 ```
 
 ## Notes
